@@ -1,0 +1,55 @@
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/*takes exactly two rows */
+.movie-grid > * {
+  max-width: 100%;
+  flex-grow: 1;
+}
+
+/* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Pagination Buttons */
+.pagination button {
+  background-color: #f5c518;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover & Active Effects */
+.pagination button:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+.pagination button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Page Indicator */
+.pagination span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin: 0 10px;
+}

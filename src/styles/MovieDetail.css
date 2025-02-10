@@ -1,0 +1,316 @@
+/* Global Fix for Overflow Issues */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+/* Main Details Section: Half & Half Layout */
+.details-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 60vh;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 20px;
+  overflow: hidden; /* Prevents content overflow */
+}
+
+/* Left Side: Poster + Movie Info */
+.left-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+  min-height: 0; /* Allows it to shrink when reducing viewport height */
+  overflow: hidden;
+}
+
+/* Ensure Poster and Details are side by side */
+.details-left {
+  
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-grow: 1; /* Ensures it expands properly */
+  min-height: 0;
+}
+
+.poster-container {
+  
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  width: auto;
+  max-height: 100%; /* Ensures it does not exceed its parent container */
+}
+
+.poster-image {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  max-height: 60vh; /* Adjusts height dynamically based on viewport height */
+  object-fit: contain; /* Ensures full visibility */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.poster-image:hover {
+  transform: scale(1.1);
+}
+
+/* Movie Info */
+.details-info {
+  flex: 1;
+  min-width: 250px;
+  text-align: left;
+}
+
+.details-title {
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.details-rating,
+.details-genres,
+.details-release-date,
+.details-duration {
+  font-size: 16px;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.details-rating {
+  color: #ffcc00;
+}
+
+/* Overview Section */
+.overview-container {
+  padding: 4px;
+  background-color: transparent;
+  border-radius: 8px;
+   
+}
+
+.overview-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 15px;
+}
+
+.overview {
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 0;
+}
+
+/* Right Side: Full Backdrop Image */
+.backdrop-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;  
+  background-color: black;  
+}
+
+.backdrop-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;  
+  mix-blend-mode: normal;
+}
+
+/* Cast Section */
+.cast-container {
+  margin-top: 15px;
+  padding: 10px 20px;
+  text-align: center;
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #555 #222;
+  max-width: 100%;  
+}
+
+/* Custom Scrollbar Styling */
+.cast-container::-webkit-scrollbar {
+  height: 8px;
+  display: none;
+}
+
+.cast-container::-webkit-scrollbar-track {
+  background: #222;
+}
+
+.cast-container::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+/* Cast Title */
+.cast-heading {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px;
+}
+
+/* Cast List */
+.cast-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  max-width: 100%;
+}
+
+/* Cast Item */
+.cast-item {
+  min-width: 130px;
+  max-width: 130px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cast-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Actor Image */
+.actor-image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.actor-image:hover {
+  transform: scale(1.05);
+}
+
+/* Actor Name & Role */
+.actor-details {
+  margin-top: 3px;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.character-name {
+  font-size: 12px;
+  color: #bbbbbb;
+  white-space: normal;
+  line-height: 1.1;
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .details-section {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .left-side,
+  .backdrop-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .details-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .details-info {
+    width: 90%;
+    text-align: center;
+  }
+
+  .poster-image {
+    max-width: 60%;
+    min-width: 180px;
+    height: auto;
+  }
+
+  .backdrop-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+  }
+
+  .cast-container {
+    align-items: center;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .cast-list {
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .cast-item {
+    min-width: 120px;
+    max-width: 120px;
+    padding: 5px;
+  }
+
+  .actor-image {
+    height: 150px;
+  }
+
+  .actor-details {
+    font-size: 12px;
+  }
+
+  .character-name {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+}
